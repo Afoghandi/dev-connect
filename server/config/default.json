@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://admin:123123YouTube@dev-connect.z1lkj.mongodb.net/dev-connect?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubCliebId": "09f8c3a28289e66581e5",
+    "githubSecret": "556f4222e81bce1eb419bd86a31541d1cc69d926"
+}
