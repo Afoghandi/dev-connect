@@ -1,7 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../actions/auth';
+
 import './styles/navbar.css';
+import { Fragment } from 'react';
 const Navbar = () => {
+	const dispatch = useDispatch();
+	const history = useHistory();
+
+	const auth = useSelector((state) => state.auth);
+	const { isAuthenticated, loading } = auth;
+
+	const logoutFunc = () => {
+		dispatch(logout());
+		history.push('/');
+	};
+	useEffect(() => {
+		logoutFunc();
+	}, []);
+
+	const authLinks = (
+		<ul>
+			<li>
+				<a onClick={logoutFunc} href='#!'>
+					<i className='fas fa-sign-out-alt'></i>
+					<span className='hide-sm'> Log Out</span>
+				</a>
+			</li>
+		</ul>
+	);
+
+	const guestLinks = (
+		<ul>
+			<li>
+				<Link to='#!'>Developers</Link>
+			</li>
+			<li>
+				<Link to='/register'>Register</Link>
+			</li>
+			<li>
+				<Link to='/login'>Login</Link>
+			</li>
+		</ul>
+	);
 	return (
 		<nav className='navbar bg-dark'>
 			<h1>
@@ -9,18 +51,11 @@ const Navbar = () => {
 					<i className='fas fa-code'></i> DevConnector
 				</Link>
 			</h1>
-			<ul>
-				<li>
-					<Link to='!#'>Developers</Link>
-				</li>
-				<li>
-					<Link to='/register'>Register</Link>
-				</li>
-				<li>
-					<Link to='/login'>Login</Link>
-				</li>
-			</ul>
+			{!loading && (
+				<Fragment>{isAuthenticated ? authLinks : guestLinks} </Fragment>
+			)}
 		</nav>
 	);
 };
+
 export default Navbar;

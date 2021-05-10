@@ -13,7 +13,7 @@ export const authUsers = async(req, res) => {
         res.json(user);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        return res.status(500).send('Server Error');
     }
 };
 
@@ -21,7 +21,7 @@ export const authUsers = async(req, res) => {
 export const signin = async(req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ errors: errors.array() });
     }
     const { email, password } = req.body;
     try {
@@ -44,10 +44,10 @@ export const signin = async(req, res) => {
         };
         jwt.sign(payload, jwtToken, { expiresIn: '1h' }, (err, token) => {
             if (err) throw err;
-            res.json({ token });
+            return res.json({ token });
         });
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server error');
+        return res.status(500).send('Server error');
     }
 };
