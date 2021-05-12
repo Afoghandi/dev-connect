@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Navbar, Landing, Alert } from './component';
+import { Navbar, Landing, Alert, Dashboard } from './component';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';
+import PrivateRoute from './component/route/PrivateRoute';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -30,6 +31,7 @@ const App = () => {
 						<Switch>
 							<Route exact path='/register' component={Register} />
 							<Route exact path='/login' component={Login} />
+							<PrivateRoute exact path='/dashboard' component={Dashboard} />
 						</Switch>
 					</section>
 				</Fragment>

@@ -15,7 +15,7 @@ import {
 } from '../controllers/profile.js';
 const router = express.Router();
 
-//@route   Get localhost:5000/profile/me
+//@route   Get localhost:5000/me
 router.get('/me', auth, usersProfile);
 
 //@route   POST localhost:5000/profile

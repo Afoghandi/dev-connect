@@ -6,3 +6,6 @@ from './navbar';
 
 export { default as Alert }
 from './alert';
+
+export { default as Dashboard }
+from './dashboard';

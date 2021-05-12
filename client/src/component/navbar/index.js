@@ -14,7 +14,7 @@ const Navbar = () => {
 
 	const logoutFunc = () => {
 		dispatch(logout());
-		history.push('/');
+		history.push('/dashboard');
 	};
 	useEffect(() => {
 		logoutFunc();
