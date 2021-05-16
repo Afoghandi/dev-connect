@@ -9,3 +9,8 @@ from './alert';
 
 export { default as Dashboard }
 from './dashboard';
+export { default as Spinner }
+from './loading';
+
+export { default as CreateProfile }
+from './profile-form';

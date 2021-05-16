@@ -23,6 +23,13 @@ const Navbar = () => {
 	const authLinks = (
 		<ul>
 			<li>
+				<i className='fas fa-user'></i>
+				<span className='hide-sm'>
+					{' '}
+					<Link to='/dashboard'>Dashboard</Link>
+				</span>
+			</li>
+			<li>
 				<a onClick={logoutFunc} href='#!'>
 					<i className='fas fa-sign-out-alt'></i>
 					<span className='hide-sm'> Log Out</span>
