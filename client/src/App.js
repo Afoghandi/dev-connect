@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Navbar, Landing, Alert, Dashboard, CreateProfile } from './component';
+import EditProfile from './component/profile-form/EditProfile';
+import AddExperience from './component/profile-form/AddExperience';
+import AddEducation from './component/profile-form/AddEducation';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Register from './component/auth/Register';
@@ -36,6 +39,21 @@ const App = () => {
 								exact
 								path='/create-profile'
 								component={CreateProfile}
+							/>
+							<PrivateRoute
+								exact
+								path='/edit-profile'
+								component={EditProfile}
+							/>
+							<PrivateRoute
+								exact
+								path='/add-experience'
+								component={AddExperience}
+							/>
+							<PrivateRoute
+								exact
+								path='/add-education'
+								component={AddEducation}
 							/>
 						</Switch>
 					</section>

@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { createProfile } from '../../actions/profile';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { getCurrentProfile, createProfile } from '../../actions/profile';
 
-import { useDispatch } from 'react-redux';
-const CreateProfile = () => {
+import { useSelector, useDispatch } from 'react-redux';
+const EditProfile = () => {
 	const [formData, setFormData] = useState({
 		company: '',
 		website: '',
@@ -20,7 +20,28 @@ const CreateProfile = () => {
 	});
 	const history = useHistory();
 	const dispatch = useDispatch();
+	const state = useSelector((state) => state.profile);
+	const { profile, loading } = state;
 	const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+	useEffect(() => {
+		getCurrentProfile();
+		setFormData({
+			company: loading || !profile.company ? '' : profile.company,
+			website: loading || !profile.website ? '' : profile.website,
+			location: loading || !profile.location ? '' : profile.location,
+			status: loading || !profile.status ? '' : profile.status,
+			skills: loading || !profile.skills ? '' : profile.skills.join(','),
+			githubusername:
+				loading || !profile.githubusername ? '' : profile.githubusername,
+			bio: loading || !profile.bio ? '' : profile.bio,
+			twitter: loading || !profile.social ? '' : profile.social.twitter,
+			facebook: loading || !profile.social ? '' : profile.social.facebook,
+			linkedin: loading || !profile.social ? '' : profile.social.linkedin,
+			youtube: loading || !profile.social ? '' : profile.social.youtube,
+			instagram: loading || !profile.social ? '' : profile.social.instagram,
+		});
+	}, [loading]);
 
 	const {
 		company,
@@ -41,7 +62,7 @@ const CreateProfile = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(createProfile(formData, history));
+		dispatch(createProfile(formData, history, true));
 	};
 	return (
 		<Fragment>
@@ -222,4 +243,4 @@ const CreateProfile = () => {
 	);
 };
 
-export default CreateProfile;
+export default EditProfile;
