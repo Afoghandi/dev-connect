@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../actions/auth';
@@ -16,9 +16,6 @@ const Navbar = () => {
 		dispatch(logout());
 		history.push('/dashboard');
 	};
-	useEffect(() => {
-		logoutFunc();
-	}, []);
 
 	const authLinks = (
 		<ul>
@@ -33,10 +30,10 @@ const Navbar = () => {
 				</span>{' '}
 			</li>{' '}
 			<li>
-				<a onClick={logoutFunc} href='#!'>
+				<Link to='/' onClick={logoutFunc} href='#!'>
 					<i className='fas fa-sign-out-alt'> </i>{' '}
 					<span className='hide-sm'> Log Out </span>{' '}
-				</a>{' '}
+				</Link>{' '}
 			</li>{' '}
 		</ul>
 	);

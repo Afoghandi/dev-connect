@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { addEducation } from '../../actions/profile';
 const AddEducation = () => {
 	const history = useHistory();

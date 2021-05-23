@@ -11,7 +11,7 @@ const Profiles = () => {
 
 	useEffect(() => {
 		dispatch(getProfiles());
-	}, [getProfiles]);
+	}, [dispatch]);
 	return (
 		<Fragment>
 			{loading ? (

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { addExperience } from '../../actions/profile';
 const AddExperience = () => {
 	const history = useHistory();
@@ -27,9 +27,9 @@ const AddExperience = () => {
 	};
 	return (
 		<Fragment>
-			<h1 class='large text-primary'>Add An Experience</h1>
-			<p class='lead'>
-				<i class='fas fa-code-branch'></i> Add any developer/programming
+			<h1 className='large text-primary'>Add An Experience</h1>
+			<p className='lead'>
+				<i className='fas fa-code-branch'></i> Add any developer/programming
 				positions that you have had in the past
 			</p>
 			<small>* = required field</small>
