@@ -3,6 +3,7 @@ import User from '../models/Users.js';
 import request from 'request';
 import config from 'config';
 import Profile from '../models/Profile.js';
+import Post from '../models/Post.js';
 
 //@desc    Get current users profile
 //@access  Private
@@ -119,8 +120,11 @@ export const getByUserId = async(req, res) => {
 
 export const deleteProfile = async(req, res) => {
     try {
+        //remove user post
+        await Post.deleteMany({ user: req.user.id });
         //Remove profile
         await Profile.findOneAndRemove({ user: req.user.id });
+        //Remove user
         await User.findOneAndRemove({ _id: req.user.id });
         res.json({ msg: 'User deleted' });
     } catch (err) {
@@ -187,15 +191,8 @@ export const addProfileEducation = async(req, res) => {
     if (!errors.isEmpty()) {
         return res, status(400).json({ errors: errors.array() });
     }
-    const {
-        school,
-        degree,
-        fieldofstudy,
-        from,
-        to,
-        current,
-        description,
-    } = req.body;
+    const { school, degree, fieldofstudy, from, to, current, description } =
+    req.body;
     const newEdu = {
         school,
         degree,

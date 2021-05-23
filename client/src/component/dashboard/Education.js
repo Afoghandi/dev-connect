@@ -1,23 +1,29 @@
 import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import Moment from 'react-moment';
+import { deleteEducation } from '../../actions/profile';
 
 const Education = ({ education }) => {
+	const dispatch = useDispatch();
 	const educations = education.map((edu) => (
 		<tr key={edu._id}>
 			<td>{edu.school} </td>
 			<td className='hide-sm'>{edu.degree} </td>
 			<td>
-				<Moment format='dd/mm/yyyy'>{edu.from} </Moment> -{' '}
+				<Moment format='DD/MM/YYYY'>{edu.from}</Moment> -{' '}
 				{edu.to === null ? (
 					'Now'
 				) : (
-					<Moment format='dd/mm/yyyy'>{edu.to} </Moment>
+					<Moment format='DD/MM/YYYY'>{edu.to}</Moment>
 				)}
-				{console.log(edu.from)}
 			</td>
 			<td>
-				<button className='btn btn-danger'>Delete</button>
+				<button
+					className='btn btn-danger'
+					onClick={() => dispatch(deleteEducation(edu._id))}
+				>
+					Delete
+				</button>
 			</td>
 		</tr>
 	));

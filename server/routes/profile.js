@@ -72,7 +72,7 @@ router.put(
 //@route   DELETE localhost:5000/profile/education/:exp_id
 router.delete('/education/:exp_id', auth, deleteProfileEducation);
 
-//@route   DELETE localhost:5000/profile/github/:username
+//@route   GET localhost:5000/profile/github/:username
 
 router.get('/github/:username', getGithubUser);
 

@@ -14,3 +14,6 @@ from './loading';
 
 export { default as CreateProfile }
 from './profile-form';
+
+export { default as Profiles }
+from './profiles';
