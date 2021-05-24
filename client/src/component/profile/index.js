@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../loading/index';
 import { getProfileById } from '../../actions/profile';
 import { Link } from 'react-router-dom';
+import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout';
 
 const Profile = ({ match }) => {
 	const getProfile = useSelector((state) => state.profile);
@@ -11,7 +13,7 @@ const Profile = ({ match }) => {
 	const { profile, loading } = getProfile;
 	useEffect(() => {
 		dispatch(getProfileById(match.params.id));
-	}, [dispatch]);
+	}, [dispatch, match.params.id]);
 	return (
 		<Fragment>
 			{profile === null || loading ? (
@@ -29,6 +31,10 @@ const Profile = ({ match }) => {
 								Edit Profile
 							</Link>
 						)}
+					<div class='profile-grid my-1'>
+						<ProfileTop profile={profile} />
+						<ProfileAbout profile={profile} />
+					</div>
 				</Fragment>
 			)}
 		</Fragment>
