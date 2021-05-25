@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles/profile.css';
+import './styles/profiles.css';
 const ProfileItem = ({
 	profile: {
 		user: { name, _id, avatar },
