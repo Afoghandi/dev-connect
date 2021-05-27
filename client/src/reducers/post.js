@@ -1,7 +1,7 @@
 /* eslint-disable default-case */
 /* eslint-disable import/no-anonymous-default-export */
 
-import { GET_POSTS, POSTS_ERROR } from '../constants/actionTypes';
+import { GET_POSTS, POSTS_ERROR, UPDATE_LIKES } from '../constants/actionTypes';
 
 const initialState = {
     posts: [],
@@ -23,6 +23,14 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 error: payload,
+                loading: false,
+            };
+        case UPDATE_LIKES:
+            return {
+                ...state,
+                posts: state.posts.map((post) =>
+                    post._id === payload.id ? {...post, likes: payload.likes } : post
+                ),
                 loading: false,
             };
         default:

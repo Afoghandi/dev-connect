@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
+import { addLike, removeLike } from '../../actions/post';
 
 const PostItem = ({
 	post: { _id, text, name, avatar, user, likes, comments, date },
@@ -26,13 +27,20 @@ const PostItem = ({
 				<p className='post-date'>
 					Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>
 				</p>
-				<button type='button' className='btn btn-light'>
+				<button
+					onClick={(e) => dispatch(addLike(_id))}
+					type='button'
+					className='btn btn-light'
+				>
 					<i className='fas fa-thumbs-up' />{' '}
 					<span> {likes.length > 0 && <span>{likes.length}</span>}</span>
 				</button>
-				<button type='button' className='btn btn-light'>
+				<button
+					type='button'
+					className='btn btn-light'
+					onClick={(e) => dispatch(removeLike(_id))}
+				>
 					<i className='fas fa-thumbs-down' />{' '}
-					<span> {likes.length > 0 && <span>{likes.length}</span>}</span>
 				</button>
 				<Link to={`/post/${_id}`} className='btn btn-primary'>
 					Discussion
