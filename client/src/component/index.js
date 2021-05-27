@@ -20,3 +20,6 @@ from './profiles';
 
 export { default as Profile }
 from './profile';
+
+export { default as Posts }
+from './posts';

@@ -37,7 +37,7 @@ export const createProfile = async(req, res) => {
         location,
         bio,
         status,
-        githunusername,
+        githubusername,
         skills,
         youtube,
         facebook,
@@ -54,7 +54,7 @@ export const createProfile = async(req, res) => {
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
-    if (githunusername) profileFields.githunusername = githunusername;
+    if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
         profileFields.skills = skills.split('.').map((skill) => skill.trim());
     }
