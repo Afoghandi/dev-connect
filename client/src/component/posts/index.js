@@ -4,6 +4,7 @@ import Spinner from '../loading';
 import { getPosts } from '../../actions/post';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
+import './style/posts.css';
 
 const Posts = () => {
 	const dispatch = useDispatch();
@@ -18,19 +19,19 @@ const Posts = () => {
 	) : (
 		<Fragment>
 			{' '}
-			<h1 className='text-primary'>
-				Posts{' '}
+			<h1 className=' large text-primary'>
+				Posts
 				<p className='lead'>
 					<i className='fas fa-user'> </i>Welcome to the community{' '}
 				</p>{' '}
-				<PostForm />
-				<div className='posts'>
-					{' '}
-					{posts.map((post) => (
-						<PostItem key={post.id} post={post} />
-					))}{' '}
-				</div>{' '}
-			</h1>{' '}
+			</h1>
+			<PostForm />
+			<div className='posts'>
+				{' '}
+				{posts.map((post) => (
+					<PostItem key={post.id} post={post} />
+				))}{' '}
+			</div>{' '}
 		</Fragment>
 	);
 };

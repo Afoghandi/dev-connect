@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addPost } from '../../actions/post';
+import { addComment } from '../../actions/post';
 
-const PostForm = () => {
+const CommentForm = ({ postId }) => {
 	const dispatch = useDispatch();
 
 	const [text, setText] = useState('');
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(addPost({ text }));
+		dispatch(addComment(postId, { text }));
 		setText('');
 	};
 	return (
 		<div className='post-form'>
 			<div className='bg-primary p'>
-				<h3> Say Something ... </h3>{' '}
+				<h3> Leave A Comment </h3>{' '}
 			</div>{' '}
 			<form className='form my-1' onSubmit={handleSubmit}>
 				<textarea
@@ -32,4 +32,4 @@ const PostForm = () => {
 	);
 };
 
-export default PostForm;
+export default CommentForm;
