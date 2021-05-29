@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../loading';
 import { getPosts } from '../../actions/post';
 import PostItem from './PostItem';
+import PostForm from './PostForm';
 
 const Posts = () => {
 	const dispatch = useDispatch();
@@ -17,17 +18,19 @@ const Posts = () => {
 	) : (
 		<Fragment>
 			{' '}
-			<h1 className='large text-primary'>
-				Posts
+			<h1 className='text-primary'>
+				Posts{' '}
 				<p className='lead'>
-					<i className='fa-user'></i>Welcome to the community{' '}
-				</p>
+					<i className='fas fa-user'> </i>Welcome to the community{' '}
+				</p>{' '}
+				<PostForm />
 				<div className='posts'>
+					{' '}
 					{posts.map((post) => (
 						<PostItem key={post.id} post={post} />
-					))}
-				</div>
-			</h1>
+					))}{' '}
+				</div>{' '}
+			</h1>{' '}
 		</Fragment>
 	);
 };
